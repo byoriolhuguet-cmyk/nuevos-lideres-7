@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Nuevos Líderes · Panel T7</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: glass sidebar + tabbed main canvas over the podcast's deep-green ground with pink/gold light blooms. Single committed dark look (brand cover). */
+:root{
+  --ground:#1E2E2A; --ground-2:#2E4541;
+  --pink:#F6D3DC; --pink-strong:#F2B8C7;
+  --gold:#DDAA48;
+  --ink:#F4EEEC; --muted:rgba(244,238,236,.66); --faint:rgba(244,238,236,.42);
+  --glass:rgba(255,255,255,.075); --glass-2:rgba(255,255,255,.12); --line:rgba(255,255,255,.14);
+  --ok:#8FD6A8; --warn:#F0C566; --risk:#F2939E;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --r:20px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;font:14px/1.55 var(--f-body);color:var(--ink);background:var(--ground);
+  background-image:
+    radial-gradient(900px 600px at 8% -10%, rgba(242,184,199,.30), transparent 60%),
+    radial-gradient(700px 500px at 100% 10%, rgba(221,170,72,.22), transparent 60%),
+    radial-gradient(800px 700px at 60% 110%, rgba(110,170,150,.25), transparent 60%),
+    linear-gradient(160deg,#2E4541 0%,#1E2E2A 55%,#18241F 100%);
+  background-attachment:fixed;
+}
+a{color:var(--pink)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.app{display:grid;grid-template-columns:250px minmax(0,1fr);gap:20px;max-width:1440px;margin:0 auto;
+  padding-block:20px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:var(--r);
+  backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);
+  box-shadow:0 10px 40px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.08)}
+/* sidebar */
+.side{position:sticky;top:20px;align-self:start;padding:18px 14px;display:flex;flex-direction:column;gap:18px;max-height:calc(100vh - 40px);overflow:auto}
+.brand{display:flex;gap:10px;align-items:center;padding:4px 6px}
+.mic{width:38px;height:38px;border-radius:12px;background:var(--pink);display:grid;place-items:center;flex:none}
+.brand b{font:700 17px/1 var(--f-display);letter-spacing:.04em;text-transform:uppercase;color:var(--pink);display:block}
+.brand small{color:var(--faint);font-size:11.5px}
+.navlbl{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:0 10px}
+nav{display:flex;flex-direction:column;gap:3px}
+nav button{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;color:var(--muted);font-weight:500}
+nav button:hover{background:var(--glass)}
+nav button[aria-selected="true"]{background:rgba(246,211,220,.92);color:#1E2E2A;font-weight:600}
+nav button .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55}
+.side-foot{margin-top:auto;padding:12px;border-radius:14px;background:var(--glass);font-size:12px;color:var(--muted)}
+.side-foot strong{color:var(--gold)}
+/* main */
+main{min-width:0;display:flex;flex-direction:column;gap:20px}
+.top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-end}
+.top h1{margin:0;font:800 clamp(30px,4vw,44px)/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;color:var(--pink);text-wrap:balance}
+.top p{margin:6px 0 0;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:12px;color:var(--muted);white-space:nowrap}
+.chip.gold{border-color:rgba(221,170,72,.5);color:var(--gold)}
+.chip.pink{border-color:rgba(246,211,220,.5);color:var(--pink)}
+section[role="tabpanel"]{display:flex;flex-direction:column;gap:20px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{padding:20px;min-width:0}
+.card h2{margin:0 0 4px;font:700 22px/1.1 var(--f-display);text-transform:uppercase;letter-spacing:.02em;text-wrap:balance}
+.card h3{margin:0 0 6px;font:600 15px/1.3 var(--f-body)}
+.eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+.muted{color:var(--muted)} .faint{color:var(--faint)}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.clean li{padding-left:16px;position:relative}
+ul.clean li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.hero{padding:26px;background:linear-gradient(135deg,rgba(242,184,199,.38),rgba(221,170,72,.18) 60%,rgba(255,255,255,.06));position:relative;overflow:hidden}
+.hero h2{font-size:clamp(28px,3.6vw,42px);color:var(--ink);max-width:22ch}
+.hero h2 em{font-style:normal;color:var(--pink)}
+.hero p{max-width:62ch;color:var(--ink);opacity:.86;margin:10px 0 0}
+.wave{position:absolute;right:22px;top:22px;display:flex;gap:4px;align-items:center;opacity:.9}
+.wave i{display:block;width:5px;border-radius:3px;background:var(--gold);animation:w 1.4s ease-in-out infinite}
+@keyframes w{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.wave i{animation:none}}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:18px}
+.stat b{display:block;font:800 34px/1 var(--f-display);color:var(--ink);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.tile b{display:block;font:800 36px/1 var(--f-display);color:var(--pink);font-variant-numeric:tabular-nums;margin:6px 0 4px}
+.tile p{margin:0;color:var(--muted);font-size:12.5px}
+.src{font-size:11px;color:var(--faint);margin-top:8px}
+.src a{color:var(--faint)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap}
+.pill.ok{background:rgba(143,214,168,.16);color:var(--ok)}
+.pill.warn{background:rgba(240,197,102,.16);color:var(--warn)}
+.pill.risk{background:rgba(242,147,158,.16);color:var(--risk)}
+.pill.arc{background:rgba(246,211,220,.14);color:var(--pink)}
+.mono{font-family:var(--f-mono);font-size:12px}
+.tablewrap{overflow-x:auto;border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+th{text-align:left;font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+/* timeline */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.step{padding:12px;border-radius:14px;background:var(--glass);border:1px solid var(--line)}
+.step .mono{color:var(--gold)}
+.step p{margin:4px 0 0;font-size:12.5px;color:var(--muted)}
+/* episodes */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{all:unset;cursor:pointer;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:12.5px;color:var(--muted)}
+.filters button[aria-pressed="true"]{background:var(--gold);color:#1E2E2A;border-color:var(--gold);font-weight:600}
+.eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.ep{padding:18px;display:flex;flex-direction:column;gap:10px;cursor:pointer;transition:transform .2s,background .2s}
+.ep:hover{transform:translateY(-2px);background:var(--glass-2)}
+.ep .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ep .num{font:800 30px/1 var(--f-display);color:var(--pink)}
+.ep h3{font:700 19px/1.15 var(--f-display);text-transform:uppercase;letter-spacing:.01em;margin:0;text-wrap:balance}
+.ep p{margin:0;color:var(--muted);font-size:13px}
+.ep .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.detail{padding:24px}
+.detail h2{font-size:30px;color:var(--pink)}
+.detail .cols{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;margin-top:16px}
+.runsheet{display:flex;flex-direction:column;gap:0;border-left:2px solid rgba(221,170,72,.4);margin-left:6px}
+.rs{padding:6px 0 12px 16px;position:relative}
+.rs::before{content:"";position:absolute;left:-7px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--ground-2);border:2px solid var(--gold)}
+.rs .mono{color:var(--gold)}
+.rs b{display:block;margin:2px 0}
+.rs span{color:var(--muted);font-size:13px}
+.box{padding:14px;border-radius:14px;background:rgba(0,0,0,.14);border:1px solid rgba(255,255,255,.08)}
+.box + .box{margin-top:12px}
+.box .eyebrow{margin-bottom:4px}
+.btn{all:unset;cursor:pointer;padding:9px 16px;border-radius:999px;background:var(--ink);color:#1E2E2A;font-weight:600;font-size:13px;display:inline-flex;gap:8px;align-items:center}
+.btn.ghost{background:var(--glass);color:var(--ink);border:1px solid var(--line)}
+/* calendar */
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.day{padding:12px;border-radius:14px;background:var(--glass);border:1px solid var(--line);min-height:120px}
+.day.hot{background:rgba(246,211,220,.16);border-color:rgba(246,211,220,.45)}
+.day b{font:700 16px/1 var(--f-display);text-transform:uppercase;letter-spacing:.04em;color:var(--gold)}
+.day p{margin:8px 0 0;font-size:12.5px;color:var(--muted)}
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:12px}
+.check:hover{background:var(--glass)}
+.check input{width:17px;height:17px;accent-color:var(--gold);margin-top:2px;flex:none}
+.check.done span{text-decoration:line-through;color:var(--faint)}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--gold));border-radius:99px;transition:width .3s}
+.funnel{display:flex;flex-direction:column;gap:8px}
+.fstep{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center}
+.fstep .lvl{font:700 15px/1 var(--f-display);text-transform:uppercase;letter-spacing:.05em;color:var(--pink)}
+.fstep .fb{padding:10px 14px;border-radius:12px;background:var(--glass);border:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.quote{font:700 22px/1.2 var(--f-display);text-transform:uppercase;color:var(--ink);letter-spacing:.01em}
+@media (max-width:1100px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}.detail .cols{grid-template-columns:1fr}}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;flex-direction:row;align-items:center;max-height:none;overflow:visible;padding:10px;background:rgba(30,46,42,.82)}
+  .brand small,.navlbl,.side-foot{display:none}
+  nav{flex-direction:row;overflow-x:auto;scrollbar-width:none;flex:1}
+  nav button{white-space:nowrap;padding:8px 12px}
+  nav button .dot{display:none}
+  .week{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr}.fstep{grid-template-columns:1fr}.week{grid-template-columns:1fr}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ground)}
+</style>
+<style>
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dd .box{margin:0!important}
+.phase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+@media (max-width:620px){.dd,.phase{grid-template-columns:1fr}}
+</style>
+<div class="app">
+  <aside class="side glass">
+    <div class="brand">
+      <div class="mic" aria-hidden="true">
+        <svg width="18" height="22" viewBox="0 0 18 22"><rect x="5" y="1" width="8" height="12" rx="4" fill="#1E2E2A"/><path d="M2 10a7 7 0 0 0 14 0" stroke="#1E2E2A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M9 17v3M5 20.5h8" stroke="#1E2E2A" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div><b>Nuevos Líderes</b><small>T7 · La IA también juega</small></div>
+    </div>
+    <div class="navlbl">Panel</div>
+    <nav role="tablist" aria-label="Secciones del panel" id="nav"></nav>
+    <div class="side-foot">Temporada 7 · <strong>16 episodios + tráiler</strong><br>Dic 2026 – Abr 2027 · 25–30 min · audio<br><span class="faint">Xavier M. Triadó y Oriol Huguet</span></div>
+  </aside>
+
+  <main>
+    <header class="top">
+      <div>
+        <h1 id="pageTitle">Buenas, Oriol</h1>
+        <p id="pageSub"></p>
+      </div>
+      <div class="chips"><span class="chip gold" id="todayChip"></span><span class="chip pink" id="nextChip"></span></div>
+    </header>
+
+    <!-- RESUMEN -->
+    <section role="tabpanel" id="p-resumen" data-title="Buenas, Oriol" data-sub="Centro de mando de la temporada 7 del pódcast del Máster en Dirección de Empresas Deportivas (UB).">
+      <div class="grid" style="grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)">
+        <div class="glass hero">
+          <div class="wave" aria-hidden="true"><i style="height:14px"></i><i style="height:26px;animation-delay:.2s"></i><i style="height:18px;animation-delay:.4s"></i><i style="height:30px;animation-delay:.1s"></i><i style="height:12px;animation-delay:.3s"></i></div>
+          <div class="eyebrow">Tesis de la temporada</div>
+          <h2>La IA ya no es un complemento: <em>es parte del juego</em></h2>
+          <p>Un episodio cada martes, de 25–30 minutos, con dos voces: <b>Xavier y Oriol</b>. Cada episodio responde a una pregunta que se haría cualquier persona a la que le guste el deporte y la contesta con <b>casos reales</b> explicados de forma sencilla y con su fuente.</p>
+          <div class="stats">
+            <div class="stat"><b>×4</b><span>frecuencia (1/mes → 1/semana)</span></div>
+            <div class="stat"><b>16+1</b><span>episodios + tráiler</span></div>
+            <div class="stat"><b>2</b><span>voces, sin invitados</span></div>
+            <div class="stat"><b>4</b><span>mañanas de grabación presencial</span></div>
+          </div>
+        </div>
+        <div class="glass card" id="nextCard"></div>
+      </div>
+
+      <div class="grid g3">
+        <div class="glass card">
+          <div class="eyebrow">Por qué semanal</div>
+          <h3>El oyente español escucha a diario</h3>
+          <p class="muted" style="margin:0">7 de cada 10 escuchan pódcast cada día: 9,5 episodios y 10,6 h a la semana. El hábito se crea con una cita fija, y una vez al mes no basta para crearlo.</p>
+          <div class="src">Fuente: <a href="https://senalnews.com/es/data/el-70-de-los-espanoles-escucha-podcasts-todos-los-dias-" target="_blank" rel="noopener">Observatorio iVoox 2026</a></div>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Por qué en audio</div>
+          <h3>El 64% prefiere solo audio</h3>
+          <p class="muted" style="margin:0">Empezar sin vídeo no es una desventaja: es el formato que prefiere la mayoría en España y el pódcast inspira más confianza (66%) que YouTube y el videopodcast (25%). El vídeo queda para la fase 2.</p>
+          <div class="src">Fuente: Observatorio iVoox 2026</div>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Por qué casos reales</div>
+          <h3>Se escucha para aprender</h3>
+          <p class="muted" style="margin:0">El 62% escucha pódcast para aprender y el formato favorito es el conversacional (54%). Una conversación entre dos personas que explican un caso real cubre las dos cosas.</p>
+          <div class="src">Fuente: Observatorio iVoox 2026</div>
+        </div>
+      </div>
+
+      <div class="grid g2">
+        <div class="glass card">
+          <div class="eyebrow">Próximos 14 días</div>
+          <h2>Plan de arranque</h2>
+          <div id="kickoff" style="margin-top:10px"></div>
+          <div class="bar" style="margin-top:12px"><i id="kickBar" style="width:0"></i></div>
+          <div class="src">Las marcas se guardan solo en este navegador.</div>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Reparto de roles</div>
+          <h2>Dos voces, papeles claros</h2>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+            <div class="box"><div class="eyebrow">Xavier M. Triadó · Anfitrión y abogado del diablo</div>Abre y cierra, da el veredicto final y hace las preguntas incómodas: «¿y esto quién lo paga?», «¿y si falla?». Pone la autoridad de la UB y la mirada de gestión.</div>
+            <div class="box"><div class="eyebrow">Oriol Huguet · Narrador de casos y showrunner</div>Cuenta cada caso real como una historia, explica cómo funciona la tecnología sin jerga y aporta la mirada clínica en los episodios de salud. Lleva guion, verificación de datos, producción y marketing.</div>
+          </div>
+          <p class="muted" style="margin:12px 0 0">Funciona porque hay contraste: uno cuenta y el otro cuestiona. Sin invitados, el ritmo lo dan los casos, las citas públicas y las voces de los oyentes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIAGNOSTICO -->
+    <section role="tabpanel" id="p-diagnostico" hidden data-title="Diagnóstico" data-sub="Dónde estamos, qué dice el mercado español de pódcast en 2026 y las reglas de qué hacer y qué no hacer.">
+      <div class="grid g2">
+        <div class="glass card">
+          <div class="eyebrow">Análisis del problema</div>
+          <h2>Situación actual (T1–T6)</h2>
+          <ul class="clean" style="margin-top:10px">
+            <li><b>Cadencia mensual:</b> no crea hábito, el algoritmo no lo recomienda y se pierde la conversación entre un episodio y el siguiente.</li>
+            <li><b>Formato sin sistema:</b> cada episodio se diseña desde cero y no hay secciones que el oyente reconozca.</li>
+            <li><b>Público demasiado estrecho:</b> si se habla solo para gestores deportivos, el techo de escuchas es muy bajo.</li>
+            <li><b>Distribución pasiva:</b> se publica y se espera, sin piezas para redes ni newsletter.</li>
+            <li><b>Línea base desconocida:</b> hacen falta los datos de T6 (Spotify for Creators, Apple, iVoox) para fijar objetivos reales.</li>
+          </ul>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Posicionamiento</div>
+          <h2>Para todo el que ve o practica deporte</h2>
+          <p class="quote" style="margin:12px 0 10px">«El pódcast que te explica, con casos reales, cómo la IA está cambiando el deporte que ves y el que practicas.»</p>
+          <ul class="clean">
+            <li><b>Generalista en la pregunta:</b> ¿me puede evitar una lesión?, ¿quién pita?, ¿de quién son mis datos?</li>
+            <li><b>Riguroso en la respuesta:</b> cada caso con su fuente, contado por la UB.</li>
+            <li><b>Útil al final:</b> qué puedes hacer tú con lo que has escuchado.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid g4">
+        <div class="glass card tile"><div class="eyebrow">Escucha diaria</div><b>71%</b><p>escucha a diario o varias veces al día</p><div class="src">iVoox 2026</div></div>
+        <div class="glass card tile"><div class="eyebrow">Confianza</div><b>66%</b><p>confía en el pódcast frente al 25% en YouTube y videopodcast</p><div class="src">iVoox 2026</div></div>
+        <div class="glass card tile"><div class="eyebrow">Solo audio</div><b>64%</b><p>prefiere solo audio y el 33% alterna con vídeo</p><div class="src">iVoox 2026</div></div>
+        <div class="glass card tile"><div class="eyebrow">Independientes</div><b>69%</b><p>prefiere pódcast independientes (+4 puntos frente a 2025)</p><div class="src">iVoox 2026</div></div>
+      </div>
+
+      <div class="eyebrow" style="margin:6px 0 -8px">Reglas de la temporada · qué hacer y qué no</div>
+      <div class="grid g3" id="rules"></div>
+    </section>
+
+    <!-- EPISODIOS -->
+    <section role="tabpanel" id="p-episodios" hidden data-title="Parrilla de episodios" data-sub="16 episodios + tráiler en 4 arcos generalistas. Pulsa un episodio para ver el guion por minutos, los casos reales y las fuentes.">
+      <div class="glass card">
+        <div class="eyebrow">Plantilla fija · 28 min · secciones que se repiten cada semana</div>
+        <div class="steps" id="template"></div>
+      </div>
+      <div class="filters" id="arcFilters" role="group" aria-label="Filtrar por arco"></div>
+      <div class="glass detail" id="epDetail" hidden></div>
+      <div class="eps" id="epGrid"></div>
+    </section>
+
+    <!-- MARKETING -->
+    <section role="tabpanel" id="p-marketing" hidden data-title="Estrategia de marketing" data-sub="Audiencias, canales, embudo y riesgos. Empezamos en audio y lo hacemos todo entre dos.">
+      <div class="grid g3">
+        <div class="glass card"><div class="eyebrow">Audiencia 1 · volumen</div><h3>Quien ve deporte o lo practica</h3><p class="muted" style="margin:0">Llega por las preguntas universales: lesiones, árbitros, salud, datos. Canal: Instagram, TikTok y Spotify. Aporta las escuchas.</p></div>
+        <div class="glass card"><div class="eyebrow">Audiencia 2 · autoridad</div><h3>Profesionales del deporte</h3><p class="muted" style="margin:0">Entrenadores, directivos, preparadores, periodistas. Canal: LinkedIn y newsletter. Comparten y le dan prestigio al pódcast.</p></div>
+        <div class="glass card"><div class="eyebrow">Audiencia 3 · conversión</div><h3>Estudiantes y futuros alumnos</h3><p class="muted" style="margin:0">Quieren trabajar en el deporte. Canal: Instagram y la comunicación de la UB. Son el puente hacia el máster.</p></div>
+      </div>
+
+      <div class="glass card">
+        <div class="eyebrow">Embudo</div>
+        <h2>De la pieza corta al aula</h2>
+        <div class="funnel" style="margin-top:12px">
+          <div class="fstep"><div class="lvl">Descubrir</div><div class="fb">3 audiogramas por episodio (onda de audio, subtítulos y portada) en Reels, TikTok y Shorts, más un carrusel en LinkedIn con «5 datos del episodio». KPI: alcance y vistas.</div></div>
+          <div class="fstep"><div class="lvl">Escuchar</div><div class="fb">Episodio completo en Spotify, Apple, iVoox y YouTube (audio con portada fija). Títulos con promesa clara y capítulos marcados. KPI: oyentes, horas y finalización.</div></div>
+          <div class="fstep"><div class="lvl">Seguir</div><div class="fb">Una sola llamada a la acción: seguir el pódcast y responder la pregunta de la semana con una nota de voz o un comentario. Las mejores respuestas suenan en el episodio siguiente. KPI: seguidores y respuestas.</div></div>
+          <div class="fstep"><div class="lvl">Comunidad</div><div class="fb">Newsletter «La IA también juega» con los casos y las fuentes del episodio, y un descargable: «Guía de IA en el deporte para no expertos». KPI: suscriptores.</div></div>
+          <div class="fstep"><div class="lvl">Convertir</div><div class="fb">Enlace con UTM al máster en las notas del episodio y en la newsletter, y mención breve del máster al cierre. KPI: leads del máster.</div></div>
+        </div>
+      </div>
+
+      <div class="grid g2">
+        <div class="glass card">
+          <div class="eyebrow">Fórmula de título</div>
+          <h2>Pregunta o promesa | Caso real | #N</h2>
+          <p class="muted">Lo bastante claro para que lo entienda cualquiera y lo bastante concreto para que se note que hay una historia detrás.</p>
+          <div class="box"><div class="eyebrow">Sí</div>La lesión que no ocurrió | Del rugby al Barça femenino | Nuevos Líderes #1</div>
+          <div class="box"><div class="eyebrow">No</div>Aplicaciones de la inteligencia artificial en la prevención de lesiones deportivas</div>
+          <div class="box"><div class="eyebrow">Portada de episodio</div>Número en dorado + 3 palabras en rosa sobre verde de marca. Siempre la misma composición para crear serie.</div>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Canales y su función</div>
+          <div class="tablewrap"><table style="min-width:420px">
+            <thead><tr><th>Canal</th><th>Función</th><th>Pieza</th></tr></thead>
+            <tbody>
+              <tr><td><b>Spotify</b></td><td>Escucha principal</td><td>Audio completo con capítulos</td></tr>
+              <tr><td><b>Apple / iVoox</b></td><td>Escucha fiel</td><td>Audio completo</td></tr>
+              <tr><td><b>YouTube</b></td><td>Búsqueda (SEO)</td><td>Audio con portada + Shorts</td></tr>
+              <tr><td><b>IG / TikTok</b></td><td>Alcance masivo</td><td>Audiogramas con subtítulos</td></tr>
+              <tr><td><b>LinkedIn</b></td><td>Autoridad profesional</td><td>Carrusel + post de Xavier y de Oriol</td></tr>
+              <tr><td><b>Newsletter</b></td><td>Comunidad propia</td><td>Casos + fuentes + guía</td></tr>
+            </tbody></table></div>
+        </div>
+      </div>
+
+      <div class="grid g3">
+        <div class="glass card"><div class="eyebrow">Amplificación 1</div><h3>Etiquetar a los protagonistas de los casos</h3><p class="muted" style="margin:0">Si un episodio cuenta un estudio o el proyecto de un club, en LinkedIn se etiqueta a la institución y a los autores. Suelen compartirlo y traen a una audiencia nueva sin coste.</p></div>
+        <div class="glass card"><div class="eyebrow">Amplificación 2</div><h3>Ecosistema UB</h3><p class="muted" style="margin:0">Comunicación de la UB, redes del máster, correo a alumni de T1–T6 y profesorado, y la red personal de Xavier en LinkedIn.</p></div>
+        <div class="glass card"><div class="eyebrow">Amplificación 3</div><h3>Temas de actualidad</h3><p class="muted" style="margin:0">Cuando haya noticia (polémica arbitral, lesión mediática, un estudio nuevo), sale un audiograma del episodio relacionado en menos de 24 h.</p></div>
+      </div>
+
+      <div class="glass card">
+        <div class="eyebrow">Riesgos y mitigación</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Riesgo</th><th>Nivel</th><th>Mitigación</th></tr></thead>
+          <tbody id="risks"></tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <!-- CALENDARIO -->
+    <section role="tabpanel" id="p-calendario" hidden data-title="Calendario" data-sub="Publicación los martes a las 07:00, grabación presencial en 5 bloques y una semana tipo de contenido.">
+      <div class="glass card">
+        <div class="eyebrow">Semana tipo · por episodio</div>
+        <div class="week" style="margin-top:10px" id="weekGrid"></div>
+      </div>
+      <div class="glass card">
+        <div class="eyebrow">Jornadas de grabación presencial</div>
+        <p class="muted" style="margin-top:0">Se graban 4 episodios en una mañana: Xavier reserva una mañana al mes y quedan 2–4 semanas de margen para editar.</p>
+        <div class="steps" id="batches"></div>
+      </div>
+      <div class="glass card">
+        <div class="eyebrow">Calendario de publicación</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Fecha</th><th>#</th><th>Episodio</th><th>Arco</th><th>Grabación</th><th>Estado</th></tr></thead>
+          <tbody id="calRows"></tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <!-- KPIS -->
+    <section role="tabpanel" id="p-kpis" hidden data-title="KPIs y objetivos" data-sub="La métrica principal, los hitos y el ritual de revisión. Los objetivos son propuestas a calibrar con la línea base de T6.">
+      <div class="grid" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+        <div class="glass hero">
+          <div class="eyebrow">Métrica principal (North Star)</div>
+          <h2>Horas de escucha <em>al mes</em></h2>
+          <p>Resume en una cifra el alcance, la retención y la frecuencia. Si suben las horas, el pódcast está creando hábito. También es la métrica que Spotify usa para su programa de monetización (2.000 h en 30 días), que será relevante cuando pasemos a vídeo.</p>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Ritual de revisión</div>
+          <ul class="clean" style="margin-top:6px">
+            <li><b>Lunes, 15 min (Oriol):</b> horas, oyentes, finalización y el mejor audiograma de la semana.</li>
+            <li><b>Cada 4 episodios (Xavier y Oriol):</b> retrospectiva. Se repite lo que más retiene y se cambia lo que menos.</li>
+            <li><b>Minuto donde cae la escucha:</b> se mira en Spotify for Creators y se ajusta el guion del siguiente episodio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="glass card">
+        <div class="eyebrow">Hitos propuestos</div>
+        <div class="steps" id="milestones"></div>
+      </div>
+      <div class="glass card">
+        <div class="eyebrow">KPIs por fase del embudo</div>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Fase</th><th>KPI</th><th>Objetivo propuesto</th><th>Herramienta</th></tr></thead>
+          <tbody id="kpiRows"></tbody>
+        </table></div>
+        <div class="src">Estimaciones de partida sin línea base. Se recalculan con los datos de T6.</div>
+      </div>
+    </section>
+
+    <!-- PRODUCCION -->
+    <section role="tabpanel" id="p-produccion" hidden data-title="Producción" data-sub="Grabación presencial, flujo por episodio, herramientas y checklist. Todo lo hacen Xavier y Oriol.">
+      <div class="glass card">
+        <div class="eyebrow">Para convencer a Xavier</div>
+        <h2>Por qué grabar presencial</h2>
+        <div class="grid g3" style="margin-top:12px;gap:12px" id="pitch"></div>
+        <div class="phase">
+          <div class="box"><div class="eyebrow">Fase 1 · ahora</div><b>Audio presencial.</b> Dos micrófonos dinámicos y una grabadora o interfaz de 2 canales en una sala tranquila de la UB. Prueba piloto: grabar el bloque A en presencial y escuchar la diferencia.</div>
+          <div class="box"><div class="eyebrow">Fase 2 · si el piloto funciona</div><b>Vídeo.</b> Mismo set con 2 cámaras. Abre YouTube como canal de descubrimiento y el programa de monetización de Spotify, que paga por el consumo de videopodcast. Requisitos: 3 episodios, 2.000 h y 1.000 oyentes en 30 días.</div>
+        </div>
+      </div>
+      <div class="glass card">
+        <div class="eyebrow">Flujo por episodio · T = día de publicación</div>
+        <div class="steps" id="flow"></div>
+      </div>
+      <div class="grid g2">
+        <div class="glass card">
+          <div class="eyebrow">Checklist del episodio</div>
+          <h2>Antes de pulsar «publicar»</h2>
+          <div id="checklist" style="margin-top:8px"></div>
+          <div class="bar" style="margin-top:12px"><i id="checkBar" style="width:0"></i></div>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn ghost" id="resetCheck" type="button">Vaciar checklist</button></div>
+          <div class="src">Se guarda solo en este navegador.</div>
+        </div>
+        <div class="glass card">
+          <div class="eyebrow">Herramientas</div>
+          <div class="tablewrap"><table style="min-width:380px">
+            <thead><tr><th>Tarea</th><th>Herramienta</th><th>Quién</th></tr></thead>
+            <tbody>
+              <tr><td>Investigación y guion</td><td>Claude + este panel</td><td>Oriol</td></tr>
+              <tr><td>Revisión del guion</td><td>Documento compartido</td><td>Xavier</td></tr>
+              <tr><td>Grabación presencial</td><td>2 micros dinámicos + grabadora de 2 canales</td><td>Oriol</td></tr>
+              <tr><td>Edición por transcripción</td><td>Descript (Studio Sound)</td><td>Oriol</td></tr>
+              <tr><td>Audiogramas con subtítulos</td><td>Descript o Headliner</td><td>Oriol</td></tr>
+              <tr><td>Portadas y carruseles</td><td>Canva (plantilla de marca)</td><td>Oriol</td></tr>
+              <tr><td>Alojamiento y estadísticas</td><td>Spotify for Creators</td><td>Oriol</td></tr>
+              <tr><td>Difusión en LinkedIn</td><td>Perfil personal</td><td>Xavier y Oriol</td></tr>
+            </tbody></table></div>
+          <div class="src">Cualquier herramienta se puede cambiar por una equivalente que ya use la UB.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUENTES -->
+    <section role="tabpanel" id="p-fuentes" hidden data-title="Fuentes y verificación" data-sub="Cada dato que sale en antena, con su fuente y su estado. Regla: nada sin verificar se graba.">
+      <div class="filters" id="srcFilters" role="group" aria-label="Filtrar por estado"></div>
+      <div class="glass card">
+        <div class="tablewrap"><table>
+          <thead><tr><th>Dato o afirmación</th><th>Fuente</th><th>Estado</th><th>Ep.</th></tr></thead>
+          <tbody id="srcRows"></tbody>
+        </table></div>
+      </div>
+      <div class="glass card">
+        <div class="eyebrow">Material base</div>
+        <ul class="clean">
+          <li><b>Compendio «IA aplicada al deporte»</b> (Founderz, nov. 2026): las cifras proceden del curso (oct. 2025) y hay que verificarlas antes de usarlas en antena.</li>
+          <li><b>Apuntes de Sports Marketing</b> y recursos del proyecto: patrocinio, fidelización, personalización con IA.</li>
+          <li><b>Esquema «Juicio a la IA»</b>: guion de partida del episodio 5.</li>
+          <li><b>Artículo de introducción</b> sobre IA y predicción de lesiones: <a href="https://www.eldesmarque.com/estilo-de-vida/20250316/inteligencia-artificial-predice-lesiones-deportistas-reduce-tiempos-recuperacion_18_017008957.html" target="_blank" rel="noopener">ElDesmarque, mar. 2025</a> (divulgativo: usar para el tono, no como fuente de cifras).</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+const TODAY=new Date(2026,10,10);
+const TABS=[["resumen","Resumen"],["diagnostico","Diagnóstico"],["episodios","Episodios"],["marketing","Marketing"],["calendario","Calendario"],["kpis","KPIs"],["produccion","Producción"],["fuentes","Fuentes"]];
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pd=s=>{const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)};
+const fmt=d=>d.toLocaleDateString("es-ES",{day:"numeric",month:"short",year:"numeric"});
+
+/* NAV */
+const nav=$("#nav");
+TABS.forEach(([id,l])=>{const b=document.createElement("button");b.setAttribute("role","tab");b.id="t-"+id;b.setAttribute("aria-controls","p-"+id);b.innerHTML='<span class="dot"></span>'+l;b.onclick=()=>{location.hash=id};nav.appendChild(b)});
+function show(){
+  let id=(location.hash||"#resumen").slice(1); if(!TABS.some(t=>t[0]===id)) id="resumen";
+  TABS.forEach(([t])=>{const on=t===id;$("#p-"+t).hidden=!on;$("#t-"+t).setAttribute("aria-selected",on)});
+  const p=$("#p-"+id);$("#pageTitle").textContent=p.dataset.title;$("#pageSub").textContent=p.dataset.sub;window.scrollTo({top:0});
+}
+addEventListener("hashchange",show);
+
+/* DATA */
+const ARCS={0:"Lanzamiento",1:"Tu cuerpo",2:"El juego",3:"El negocio",4:"Las reglas"};
+const TEMPLATE=[["0:00–0:45","La escena","Un momento real contado como una historia"],["0:45–2:00","La pregunta","Qué vamos a responder hoy"],["2–9","El caso","Oriol cuenta el caso real principal"],["9–16","Cómo funciona","La tecnología explicada sin jerga"],["16–22","Abogado del diablo","Xavier cuestiona: límites, riesgos, quién paga"],["22–27","Y tú, ¿qué?","Qué significa para quien escucha"],["27–29","Veredicto","Tres ideas + pregunta de la semana"],["29–30","Cierre","Seguir + newsletter"]];
+const EP=[
+ {n:"T",d:"2026-12-01",a:0,t:"La IA también juega",h:"Tráiler · 2 min",f:"Tráiler con las dos voces",o:"Sumar seguidores antes del estreno. Los rankings de novedades premian que muchos sigan el pódcast en pocos días.",run:[["0:00","Minuto 17 en Murrayfield: una alerta saca del campo a un jugador","Escena real"],["0:20","Xavier: qué es la temporada y por qué ahora","Marco"],["1:00","Oriol: tres preguntas que vamos a responder","Lesiones, árbitros, tus datos"],["1:45","Estreno doble el 15 de diciembre: síguenos","Una sola acción"]],cases:["Protector bucal inteligente (rugby, febrero de 2024)"],dev:"—",q:"—",src:["Planet Rugby"],clips:["Tráiler en audiograma de 45 s"]},
+ {n:1,d:"2026-12-15",a:1,t:"La lesión que no ocurrió",h:"IA y salud del deportista profesional · recortes de opinión (idea de Xavier)",f:"Ruta por cinco deportes, con citas públicas de quienes ya usan la IA",o:"Abrir con la pregunta que interesa a cualquiera que haga deporte: ¿puede una máquina evitar que te lesiones? Y descubrir que cada deporte la usa de forma distinta.",run:[["0:00","La escena: Escocia–Francia, febrero de 2024. En el minuto 17 un protector bucal saca a un jugador para una evaluación de conmoción. Es la primera vez en la historia","Rugby"],["0:45","La pregunta: ¿puede la IA evitar una lesión antes de que pase?","Promesa"],["2:00","Rugby: el protector bucal obligatorio para unos 7.500 profesionales desde 2024. Mide cada impacto en la cabeza. Cerca del 15% de las conmociones solo se detectan después del partido","Caso 1"],["7:00","Fútbol femenino: el Barça, ISGlobal, la Universidad de Bonn y Made of Genes publican en 2026 un modelo con 34 jugadoras, unas 14.000 observaciones diarias y 83 lesiones. El mejor predictor: la distancia acumulada en 21 días","Caso 2"],["12:00","El contraste: en Fórmula 1 los guantes biométricos son obligatorios desde 2019; en el tenis la IA de Wimbledon trabaja para el espectáculo. Hay deportes donde la IA te cuenta el partido y otros donde te cuenta tu cuerpo","Casos 3 y 4"],["16:00","Abogado del diablo con recortes de opinión: los sistemas detectan una parte de las lesiones, pero no cuándo ocurrirán; un entrenador pide cautela; jugadores que se quejan del dispositivo","Xavier"],["22:00","Y tú, ¿qué?: calcetines con sensores para corredores (proyecto europeo) y el estudio con triatletas jóvenes en España. Lo que ya llega al deporte popular","Caso 5"],["27:00","Veredicto + pregunta + adelanto de la parte 2","Cierre"]],cases:["Rugby: protector bucal inteligente (World Rugby, 2024)","Fútbol femenino: modelo del Barça (npj Digital Medicine, 2026)","Fórmula 1: guantes biométricos (2019)","Tenis: IA para el espectáculo (Wimbledon)","Running y triatlón: sensores en el calcetín y deporte base"],dev:"Si un modelo detecta la mitad de las lesiones pero no sabe cuándo, ¿a quién sientas el domingo?",q:"¿Dejarías que un algoritmo te dijera que hoy no juegas?",src:["Cleveland Clinic / World Rugby","Planet Rugby","ISGlobal · Barça Innovation Hub","Formula1.com","CORDIS (SIPAR)","datos.gob.es (por verificar)","Training Ground Guru (por verificar)"],clips:["Minuto 17 en Murrayfield","«Te cuenta el partido o te cuenta tu cuerpo»","La regla de los 21 días"],note:"Recortes de opinión: citas públicas atribuidas, leídas por nosotros, o fragmentos breves con derecho de cita (art. 32 de la Ley de Propiedad Intelectual) para análisis. Confirmar con el servicio jurídico de la UB antes de usar audio de terceros."},
+ {n:2,d:"2026-12-15",a:1,t:"Parte 2 · Tu salud con IA",h:"Del reloj inteligente al médico en el bolsillo · estreno doble",f:"Conversación Xavier–Oriol con la mirada clínica de Oriol",o:"Llevar el tema a quien escucha: lo que la élite ya usa está llegando a tu muñeca y a tu móvil. Es el episodio más fácil de compartir.",run:[["0:00","La escena: Xavier lee lo que le ha dicho su reloj esta mañana","Real, de Xavier"],["0:45","La pregunta: ¿le haces caso a tu reloj?","Promesa"],["2:00","El caso: del protector bucal del rugby al reloj de tu muñeca. La misma idea a otra escala","Puente con la parte 1"],["9:00","Cómo funciona: qué miden bien los wearables (pulso, pasos) y qué solo estiman (sueño, recuperación, VO2 máx.)","Sin jerga"],["16:00","Abogado del diablo: chatbots de salud. Cuándo ayudan y cuándo se inventan las cosas","Xavier"],["22:00","Y tú, ¿qué?: tres reglas para usar la IA en tu salud sin ponerte en riesgo","Oriol"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Wearables de consumo frente a los dispositivos de la élite","Chatbots de salud y sus errores (compendio M604)"],dev:"¿Y si la app me dice que estoy bien y no lo estoy?",q:"¿Has cambiado algún hábito por lo que te dijo una app?",src:["Compendio M217, M604, M605"],clips:["Lo que tu reloj no sabe","Las 3 reglas en 30 s"],note:"Episodio divulgativo: aviso al inicio de que no sustituye a la consulta médica."},
+ {n:3,d:"2027-01-12",a:1,t:"¿De quién es tu cuerpo?",h:"Tus datos de salud, tu equipo y quien quiere comprarlos",f:"Conversación con tres casos",o:"Volver de Navidad con una pregunta que toca a todos: los datos de tu cuerpo valen dinero. ¿De quién son?",run:[["0:00","La escena: un piloto de F1 lleva el pulso medido en el guante. ¿Quién ve esos datos?","Fórmula 1"],["0:45","La pregunta: ¿de quién son los datos de tu cuerpo?","Promesa"],["2:00","El caso: guantes biométricos obligatorios en F1 desde 2019 y la guía de la FIA sobre datos biométricos","Caso 1"],["9:00","Cómo funciona: por qué la ley europea (RGPD) trata los datos de salud como una categoría especial","Sin jerga"],["16:00","Abogado del diablo: en el deporte universitario de EE. UU. la propiedad de los datos está mal definida y se usan para decidir plantillas. Y las casas de apuestas querrían saber si un jugador tiene resaca","Xavier"],["22:00","Y tú, ¿qué?: qué datos das a tu app, a tu gimnasio y a tu club, y cómo recuperarlos","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Fórmula 1: guantes biométricos y guía de la FIA","Deporte universitario de EE. UU.","Apuestas y datos de jugadores"],dev:"Si el club paga el sensor, ¿no son suyos los datos?",q:"¿Venderías tus datos de sueño a tu equipo?",src:["Formula1.com (reglas 2019)","FIA: guía de uso de datos biométricos","RGPD art. 9","Compendio M317–M321 (FIFPRO)"],clips:["El pulso del piloto, ¿de quién es?","Datos de resaca para las apuestas"]},
+ {n:4,d:"2027-01-19",a:1,t:"Cuidar a los más pequeños",h:"IA en el deporte base: desarrollo y protección",f:"Conversación con enfoque de familias",o:"Tema que interesa a cualquier padre o madre: seguir el desarrollo de un niño deportista y detectar a tiempo que algo va mal, sin convertirlo en vigilancia.",run:[["0:00","La escena: triatletas de 11 a 18 años a los que la IA ayudó a lesionarse menos","Caso español"],["0:45","La pregunta: ¿puede la IA cuidar mejor a los niños que hacen deporte?","Promesa"],["2:00","El caso: desarrollo del deportista a largo plazo. Rendimiento, bienestar y trayectoria seguidos durante años","Desarrollo"],["9:00","Cómo funciona: detectar patrones en asistencia, mensajes y comportamiento que alertan de un problema","Protección"],["16:00","Abogado del diablo: dónde termina la protección y empieza la vigilancia de menores","Xavier"],["22:00","Y tú, ¿qué?: qué preguntar al club de tu hijo sobre sus datos","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Triatletas jóvenes en España (por verificar)","Sistemas de alerta de protección del menor en clubes (casos por investigar)"],dev:"¿Aceptarías que una IA leyera el chat del equipo de tu hijo para protegerlo?",q:"¿Qué datos de tu hijo le darías a su club?",src:["Estudio con triatletas (JAM Sports, por verificar)","Casos de protección del menor: por investigar"],clips:["Protección o vigilancia"],note:"Tema sensible: enfoque en la protección y la privacidad, sin casos de abuso con nombres. Investigar casos reales de clubes o federaciones antes de grabar."},
+ {n:5,d:"2027-01-26",a:2,t:"Juicio a la IA: árbitro, entrenador y espía",h:"Formato juicio",f:"Juicio: Oriol defiende, Xavier acusa, veredicto entre los dos",o:"Episodio-evento sobre el tema más discutido en cualquier bar: la tecnología que pita.",run:[["0:00","La escena: una voz electrónica canta «out» y el público no sabe a quién gritar","Wimbledon"],["2:00","Las reglas del juicio: tres testigos de la defensa, tres de la acusación","Formato"],["4:00","Defensa 1 · El árbitro: fuera de juego semiautomático, balón con sensor, avatares 3D en el Mundial 2026","Oriol"],["10:00","Defensa 2 · El médico y el ojeador: lesiones y fichajes","Oriol"],["16:00","Defensa 3 · El aficionado: repeticiones 3D, cámara del árbitro","Oriol"],["19:00","Acusación: el sistema que se apagó 7 minutos en Wimbledon, empleo de árbitros y jueces, deepfakes y uniformidad táctica","Xavier"],["26:00","Veredicto: decisión final humana, el deportista dueño de sus datos, transparencia del algoritmo","Los dos"],["29:00","Dilema al oyente","Cierre"]],cases:["Wimbledon 2025: jueces de línea sustituidos por un sistema automático","Mundial 2026: avatares 3D y balón con sensor"],dev:"¿Acertar siempre compensa perder la discusión?",q:"¿Prefieres un árbitro que se equivoca o un sistema que acierta sin drama?",src:["Sky Sports · Wimbledon 2025","Euronews · Mundial 2026"],clips:["7 minutos sin sistema en Wimbledon","El veredicto en 30 s"]},
+ {n:6,d:"2027-02-02",a:2,t:"El entrenador que nunca duerme",h:"La IA como ayudante del cuerpo técnico",f:"Conversación con casos de cuatro deportes",o:"Una pregunta que cualquiera entiende: ¿quién decide la alineación, el míster o la máquina?",run:[["0:00","La escena: un club noruego prueba un entrenador principal que es una IA","Caso extremo"],["0:45","La pregunta: ¿quién manda en el banquillo?","Promesa"],["2:00","El caso: en la NFL, tabletas que filtran jugadas según lo que pasa en el partido; en el béisbol, un club que deja a la IA la mayoría de decisiones de gestión","Casos"],["9:00","Cómo funciona: resúmenes de sesión, carga de entrenamiento y estado de forma del día","Sin jerga"],["16:00","Abogado del diablo: liderazgo, emoción y vestuario. Lo que no se mide","Xavier"],["22:00","Y tú, ¿qué?: cómo puede usarlo el entrenador de un equipo amateur","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["NFL: tabletas con Copilot en la banda","Oakland Ballers: decisiones con IA","HamKam: experimento con un entrenador IA"],dev:"Si el vestuario no confía en la máquina, ¿sirve de algo que acierte?",q:"¿Seguirías a un entrenador que es una IA?",src:["PwC, enero de 2026"],clips:["El entrenador IA de Noruega"]},
+ {n:7,d:"2027-02-09",a:2,t:"Del patio al profesional",h:"Cómo la IA descubre talento",f:"Conversación",o:"El sueño de cualquier chaval o padre: que alguien te vea. Qué cambia cuando quien mira es un algoritmo.",run:[["0:00","La escena: un sistema que intenta saber lo bueno que será un jugador, no lo bueno que parece hoy","Gancho"],["0:45","La pregunta: ¿te habría encontrado a ti un algoritmo?","Promesa"],["2:00","El caso: modelos de datos que ayudaron a fichajes de clubes grandes","Caso a verificar"],["9:00","Cómo funciona: plataformas que conectan deportistas, ojeadores y oportunidades con permiso del deportista","Sin jerga"],["16:00","Abogado del diablo: sesgos, menores y especialización temprana","Xavier"],["22:00","Y tú, ¿qué?: cómo hacerse visible y qué no aceptar","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Herramientas que estiman el potencial futuro de un jugador","Fichajes guiados por datos (por verificar)"],dev:"¿Y el chaval que madura tarde y el modelo descarta a los 13?",q:"¿Qué no ve nunca un algoritmo de un jugador?",src:["Training Ground Guru (ago. 2026)","Análisis de Janus Henderson (por verificar)"],clips:["El potencial que no se ve"]},
+ {n:8,d:"2027-02-16",a:2,t:"La IA te cuenta el partido",h:"Retransmisiones, estadísticas y resúmenes a medida",f:"Conversación",o:"Lo que ya nota cualquier aficionado al ver un partido: estadísticas en directo, repeticiones en 3D, comentarios automáticos.",run:[["0:00","La escena: un comentario de tenis generado por IA","Gancho"],["0:45","La pregunta: ¿está cambiando la IA cómo vemos el deporte?","Promesa"],["2:00","El caso: Wimbledon analiza cada golpe para estadísticas, predicciones y comentarios","Tenis"],["9:00","Cómo funciona: resúmenes a medida y avatares 3D para las repeticiones del Mundial","Sin jerga"],["16:00","Abogado del diablo: ¿más información o menos emoción?","Xavier"],["22:00","Y tú, ¿qué?: cómo aprovecharlo como aficionado","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Wimbledon e IBM","Comentarios con IA en el Open de Australia","Mundial 2026: repeticiones 3D"],dev:"Más información, ¿pero más pasión?",q:"¿Escucharías un partido narrado por una IA?",src:["IBM: caso Wimbledon (cifra por verificar)","PwC, enero de 2026","Euronews"],clips:["Narrado por una máquina"]},
+ {n:9,d:"2027-02-23",a:3,t:"El club que funciona solo",h:"Asistentes de IA para el trabajo invisible",f:"Conversación",o:"Cualquiera conoce un club que sobrevive gracias a voluntarios: horarios, convocatorias, cuotas, informes. La IA puede quitarles horas.",run:[["0:00","La escena: planificar los viajes de toda una temporada pasó de tres semanas a unos 20 minutos","NBA"],["0:45","La pregunta: ¿qué puede hacer la IA por tu club?","Promesa"],["2:00","El caso: San Antonio Spurs y la logística de viajes","Caso"],["9:00","Cómo funciona: asistentes para horarios, comunicación, finanzas e informes","Sin jerga"],["16:00","Abogado del diablo: coste, errores y quién responde si falla","Xavier"],["22:00","Y tú, ¿qué?: cinco tareas de un club amateur que ya se pueden delegar","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["San Antonio Spurs: viajes de temporada en ~20 minutos"],dev:"Si la IA hace las cuentas del club, ¿quién responde ante los socios?",q:"¿Qué tarea de tu club darías mañana a una IA?",src:["PwC, enero de 2026"],clips:["De 3 semanas a 20 minutos"]},
+ {n:10,d:"2027-03-02",a:3,t:"El fan que la IA conoce mejor que tu club",h:"Personalización y experiencia del aficionado",f:"Conversación",o:"A todo el mundo le llegan correos y ofertas de su equipo. Por qué cada vez parecen escritos para ti.",run:[["0:00","La escena: el mismo partido, tres correos distintos a tres aficionados","Gancho"],["0:45","La pregunta: ¿cuánto sabe tu club de ti?","Promesa"],["2:00","El caso: correos personalizados en la NBA y ofertas en tiempo real en la WNBA","Casos"],["9:00","Cómo funciona: segmentación y personalización","Sin jerga"],["16:00","Abogado del diablo: cuándo la personalización resulta invasiva","Xavier"],["22:00","Y tú, ¿qué?: qué datos das y cómo controlarlos","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Cleveland Cavaliers: correos personalizados","Indiana Fever: ofertas en tiempo real","LaLiga: fan engagement (compendio M220)"],dev:"¿Dónde está la línea entre conocerte y espiarte?",q:"¿Qué dato tuyo no le darías nunca a tu club?",src:["PwC, enero de 2026","Compendio M220"],clips:["El correo escrito para ti"]},
+ {n:11,d:"2027-03-09",a:3,t:"Gemini en la camiseta",h:"Quién paga el deporte en la era de la IA",f:"Conversación",o:"Las empresas de IA ya patrocinan selecciones. Qué compran y por qué te afecta como aficionado.",run:[["0:00","La escena: Gemini entra en el vestuario de la campeona del mundo","Gancho"],["0:45","La pregunta: ¿qué compra una empresa de IA cuando patrocina a una selección?","Promesa"],["2:00","El caso: el acuerdo de Google con la selección argentina","Caso"],["9:00","Cómo funciona: del logo en la camiseta a la tecnología dentro del equipo","Sin jerga"],["16:00","Abogado del diablo: dependencia tecnológica y datos del equipo en manos del patrocinador","Xavier"],["22:00","Y tú, ¿qué?: qué marcas de IA veremos en tu liga","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Google × selección argentina"],dev:"Si el patrocinador también analiza tus datos, ¿quién manda?",q:"¿Qué empresa de IA patrocinaría a tu equipo?",src:["Forbes Argentina","Infobae (alcance por verificar)"],clips:["Qué compra Google"]},
+ {n:12,d:"2027-03-16",a:3,t:"Deepfakes: ¿de quién es la cara del jugador?",h:"Imagen, fraude y creadores",f:"Conversación",o:"Todos hemos visto un vídeo falso. En el deporte se usan caras de futbolistas sin permiso para vender apuestas y productos financieros.",run:[["0:00","La escena: un anuncio falso con la cara de un futbolista","Gancho"],["0:45","La pregunta: ¿cómo sabes que es él?","Promesa"],["2:00","El caso: imágenes de futbolistas usadas sin consentimiento","Caso"],["9:00","Cómo funciona: cómo se hace un deepfake y cómo se detecta","Sin jerga"],["16:00","Abogado del diablo: creadores, ligas nuevas y derechos de imagen","Xavier"],["22:00","Y tú, ¿qué?: cinco señales para detectar un vídeo falso","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Uso no autorizado de imagen de futbolistas","Kings League y economía de creadores"],dev:"Si el jugador cede su imagen a una IA, ¿quién responde de lo que diga?",q:"¿Cederías tu voz a una IA?",src:["Compendio M210, M211","Señal News · fútbol en YouTube"],clips:["Cinco señales de un vídeo falso"]},
+ {n:13,d:"2027-03-23",a:4,t:"Apuestas, amaños y algoritmos",h:"La IA a los dos lados de la trampa",f:"Conversación",o:"Las apuestas están en todas las camisetas y anuncios. La IA sirve para pillar amaños y también para que apuestes más.",run:[["0:00","La escena: la carrera entre el sistema que detecta amaños y quien intenta comprar un partido","Gancho"],["0:45","La pregunta: ¿la IA protege el deporte o lo pone en venta?","Promesa"],["2:00","El caso: detección de amaños con IA","Caso"],["9:00","Cómo funciona: patrones raros en los mercados de apuestas","Sin jerga"],["16:00","Abogado del diablo: personalización de apuestas y el reglamento europeo de IA","Xavier"],["22:00","Y tú, ¿qué?: cómo te personalizan la publicidad de apuestas","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Sistemas de integridad en apuestas","Reglamento europeo de IA, art. 5"],dev:"¿Prohibirías la publicidad de apuestas personalizada por IA?",q:"¿Te ha llegado alguna vez publicidad de apuestas que parecía hecha para ti?",src:["Reglamento (UE) 2024/1689","Compendio M310"],clips:["Detector contra corruptor"]},
+ {n:14,d:"2027-03-30",a:4,t:"Los datos que deciden quién juega",h:"Participación, abandono y reglas del juego",f:"Conversación",o:"¿Por qué tanta gente deja el deporte? Los datos de participación y quién vigila que la IA se use bien.",run:[["0:00","La escena: el 40% de quienes practican deporte son mujeres, pero reciben entre el 5% y el 10% de la cobertura","Dato a verificar"],["0:45","La pregunta: ¿quién decide qué hace la IA con el deporte?","Promesa"],["2:00","El caso: medir quién practica deporte, quién lo deja y por qué","Participación"],["9:00","Cómo funciona: vigilancia automática del cumplimiento de normas en federaciones y ligas","Gobernanza"],["16:00","Abogado del diablo: ¿quién vigila al que vigila?","Xavier"],["22:00","Y tú, ¿qué?: qué exigir a tu federación","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Brecha de cobertura del deporte femenino","Admisión de proyectos de IA por nivel de riesgo (PwC)"],dev:"Si una IA decide a qué club van las subvenciones, ¿quién la audita?",q:"¿Por qué dejaste tú un deporte?",src:["Compendio M307 (cifra por verificar)","PwC, enero de 2026"],clips:["40% frente a 5%"]},
+ {n:15,d:"2027-04-06",a:4,t:"¿Estamos perdiendo el factor humano?",h:"Empleos, árbitros y entrenadores",f:"Debate Xavier–Oriol",o:"La pregunta que todos se hacen sobre la IA, aplicada al deporte: ¿qué trabajos cambian y qué no se puede delegar?",run:[["0:00","La escena: estudiantes disfrazados de jueces de línea protestan contra la IA en Wimbledon","Por verificar"],["0:45","La pregunta: ¿qué perdemos?","Promesa"],["2:00","El caso: jueces de línea sustituidos y el entrenador IA de Noruega","Casos"],["9:00","Cómo funciona: qué tareas se automatizan y cuáles no","Sin jerga"],["16:00","Abogado del diablo: Oriol defiende la IA y Xavier defiende al humano","Cambio de papeles"],["22:00","Y tú, ¿qué?: competencias que pedirá el deporte","Práctico"],["27:00","Veredicto + pregunta","Cierre"]],cases:["Wimbledon 2025","HamKam"],dev:"¿Qué no delegarías nunca?",q:"¿Qué parte de tu trabajo no le darías nunca a una IA?",src:["Sky Sports","PwC","Compendio M315"],clips:["Lo que nunca delegaríamos"]},
+ {n:16,d:"2027-04-13",a:4,t:"Veredicto final: respondéis vosotros",h:"Final de temporada con las voces de los oyentes",f:"Episodio con notas de voz y preguntas de la audiencia",o:"Cerrar la temporada con la comunidad, resumir lo aprendido y anunciar la T8.",run:[["0:00","La escena: montaje con los mejores momentos de la temporada","Montaje"],["2:00","Las 5 lecciones de la T7","Síntesis"],["12:00","Respondemos a vuestras preguntas y notas de voz","Comunidad"],["20:00","El veredicto: ¿aliada o amenaza? Resultado de la votación de los oyentes","Votación"],["27:00","Anuncio de la T8 y del máster","Conversión"]],cases:["Lo mejor de la temporada"],dev:"¿Qué nos hemos equivocado esta temporada?",q:"Tu veredicto: ¿aliada o amenaza?",src:["Toda la temporada"],clips:["El veredicto de los oyentes"]}
+];
+
+/* RESUMEN */
+$("#todayChip").textContent="Hoy · "+fmt(TODAY);
+const up=EP.find(e=>pd(e.d)>=TODAY);const days=Math.round((pd(up.d)-TODAY)/864e5);
+$("#nextChip").textContent="Próximo estreno en "+days+" días";
+$("#nextCard").innerHTML=`<div class="eyebrow">Próximo estreno</div><div style="display:flex;align-items:baseline;gap:10px"><span style="font:800 64px/1 var(--f-display);color:var(--pink)">${days}</span><span class="muted">días · ${fmt(pd(up.d))}</span></div><h2 style="margin-top:10px">${esc(up.t)}</h2><p class="muted" style="margin:6px 0 14px">${esc(up.o)}</p><div class="box"><div class="eyebrow">Después</div>Episodios 1 y 2 · estreno doble el 15 de diciembre de 2026</div><div style="margin-top:14px"><a class="btn" href="#episodios">Ver parrilla</a></div>`;
+const KICK=["Presentar el plan a Xavier con el argumento de la grabación presencial (pestaña Producción)","Pedir los datos de T6 (Spotify for Creators, Apple, iVoox) para fijar la línea base","Reservar una sala tranquila en la UB para el bloque A (24–26 nov)","Comprar o pedir prestados 2 micrófonos dinámicos y una grabadora de 2 canales","Verificar los datos marcados «por verificar» de los episodios 1–3","Elegir los recortes y citas del episodio 1 y consultar el derecho de cita con la UB","Plantilla de marca en Canva: portada de episodio, audiograma y carrusel","Grabar el bloque A: tráiler y episodios 1–3","Publicar el tráiler el 1 de diciembre y avisar a la UB y a los alumni"];
+function renderList(el,items,key,bar){const st=store.get(key,{});el.innerHTML=items.map((t,i)=>`<label class="check ${st[i]?'done':''}"><input type="checkbox" id="${key}-${i}" ${st[i]?'checked':''}><span>${esc(t)}</span></label>`).join("");const upd=()=>{const s=store.get(key,{});bar.style.width=(items.filter((_,i)=>s[i]).length/items.length*100)+"%"};el.querySelectorAll("input").forEach((c,i)=>c.addEventListener("change",()=>{const s=store.get(key,{});s[i]=c.checked;store.set(key,s);c.parentElement.classList.toggle("done",c.checked);upd()}));upd()}
+renderList($("#kickoff"),KICK,"nl7-kick2",$("#kickBar"));
+
+/* DIAGNOSTICO */
+const RULES=[
+ {t:"Títulos y portadas",y:["Una pregunta o promesa que entienda cualquiera","Un caso real concreto en el título","Numerar los episodios para crear serie","La misma composición de portada siempre"],n:["Títulos académicos («Aplicaciones de la IA en…»)","Siglas y jerga técnica","Prometer algo que el episodio no cumple"]},
+ {t:"Formato y temas",y:["Cita fija: martes a las 07:00","Las mismas secciones cada semana","Abrir con una escena real, no con un saludo","Al menos un caso real por bloque, con fuente","Episodios-hito: estreno doble y final con oyentes"],n:["Pasar de 30 minutos","Temas de nicho técnico (software, arquitectura de datos)","Hablar en abstracto sin un caso","Dar una opinión sin fuente"]},
+ {t:"Distribución y comunidad",y:["Tratar el audio como el producto principal","Hacer piezas cortas para cada red","Dar voz a los oyentes en antena","Conectar pódcast, newsletter y máster"],n:["Publicar y esperar","Depender de un solo canal","Pedir cinco cosas al final: una sola llamada a la acción"]}
+];
+$("#rules").innerHTML=RULES.map(r=>`<div class="glass card"><h2>${esc(r.t)}</h2><div class="dd" style="margin-top:12px"><div class="box"><div class="eyebrow" style="color:var(--ok)">Hacer</div><ul class="clean">${r.y.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div class="box"><div class="eyebrow" style="color:var(--risk)">No hacer</div><ul class="clean">${r.n.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div></div>`).join("");
+
+/* EPISODIOS */
+$("#template").innerHTML=TEMPLATE.map(t=>`<div class="step"><div class="mono">${t[0]}</div><b>${t[1]}</b><p>${t[2]}</p></div>`).join("");
+let arc="all";const fl=$("#arcFilters");
+[["all","Todos"],...Object.entries(ARCS)].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.textContent=l;b.dataset.k=k;b.setAttribute("aria-pressed",k==="all");b.onclick=()=>{arc=k;fl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.k===k));renderEps()};fl.appendChild(b)});
+function renderEps(){
+  $("#epGrid").innerHTML=EP.filter(e=>arc==="all"||String(e.a)===arc).map(e=>`<article class="glass ep" tabindex="0" data-n="${e.n}"><div class="row"><span class="num">${e.n==="T"?"T":"#"+e.n}</span><span class="mono faint">${fmt(pd(e.d))}</span></div><h3>${esc(e.t)}</h3><p>${esc(e.h)}</p><div class="meta"><span class="pill arc">${ARCS[e.a]}</span><span class="pill warn">${e.cases.length} ${e.cases.length===1?"caso":"casos"}</span></div></article>`).join("");
+  $("#epGrid").querySelectorAll(".ep").forEach(c=>{const o=()=>openEp(c.dataset.n);c.onclick=o;c.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();o()}}});
+}
+function openEp(n){
+  const e=EP.find(x=>String(x.n)===String(n));const d=$("#epDetail");
+  d.innerHTML=`<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start"><div><div class="eyebrow">${e.n==="T"?"Tráiler":"Episodio "+e.n} · ${fmt(pd(e.d))} · ${ARCS[e.a]}</div><h2>${esc(e.t)}</h2><p class="muted" style="margin:4px 0 0">${esc(e.h)}</p></div><button class="btn ghost" type="button" id="closeEp">Cerrar</button></div>
+  <div class="cols"><div><div class="eyebrow">Guion por minutos</div><div class="runsheet">${e.run.map(r=>`<div class="rs"><span class="mono">${r[0]}</span><b>${esc(r[1])}</b><span>${esc(r[2])}</span></div>`).join("")}</div></div>
+  <div><div class="box"><div class="eyebrow">Objetivo</div>${esc(e.o)}</div><div class="box"><div class="eyebrow">Formato</div>${esc(e.f)}</div><div class="box"><div class="eyebrow">Casos reales</div><ul class="clean">${e.cases.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div><div class="box"><div class="eyebrow">Pregunta de Xavier (abogado del diablo)</div>${esc(e.dev)}</div><div class="box"><div class="eyebrow">Pregunta de la semana</div>${esc(e.q)}</div><div class="box"><div class="eyebrow">Audiogramas previstos</div><ul class="clean">${e.clips.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div><div class="box"><div class="eyebrow">Fuentes</div><ul class="clean">${e.src.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>${e.note?`<div class="box" style="border-color:rgba(242,147,158,.4)"><div class="eyebrow" style="color:var(--risk)">Atención</div>${esc(e.note)}</div>`:""}</div></div>`;
+  d.hidden=false;$("#closeEp").onclick=()=>{d.hidden=true};d.scrollIntoView({behavior:"smooth",block:"start"});
+}
+renderEps();
+
+/* MARKETING */
+const RISKS=[["Carga de trabajo sobre Oriol (guion, edición, redes)","risk","Grabación en bloque, plantillas fijas, edición por transcripción y audiogramas automáticos. Unas 6 h por episodio como máximo."],["Agenda de Xavier","risk","Una mañana al mes para grabar y 15 minutos a la semana para revisar el guion y publicar en LinkedIn."],["Monotonía al no haber invitados","warn","Formatos que cambian (juicio, ruta por deportes, debate, oyentes), recortes de opinión y voces de la audiencia."],["Derechos de audio de terceros en los recortes","warn","Citas leídas y atribuidas, o fragmentos breves con derecho de cita revisado por el servicio jurídico de la UB."],["Datos de notas de prensa sin contrastar","warn","Pestaña Fuentes: nada pendiente de verificar se graba. Verificación en T-14."],["Sin vídeo, menos descubrimiento","warn","Audiogramas en todas las redes y YouTube con portada fija. El vídeo llega en la fase 2."],["Discurso pro-IA sin crítica","ok","El abogado del diablo es una sección fija y la pregunta de la temporada queda abierta."]];
+$("#risks").innerHTML=RISKS.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td><span class="pill ${r[1]}">${r[1]==="risk"?"Alto":r[1]==="warn"?"Medio":"Bajo"}</span></td><td class="muted">${esc(r[2])}</td></tr>`).join("");
+
+/* CALENDARIO */
+const WEEK=[["Lun","Avance: una frase del episodio en stories y LinkedIn"],["Mar","07:00 · Episodio en Spotify, Apple, iVoox y YouTube + post de Xavier y de Oriol",1],["Mié","Carrusel en LinkedIn: «5 datos del episodio»"],["Jue","Audiograma 1 (Reels, TikTok, Shorts)"],["Vie","Audiograma 2 + newsletter con fuentes"],["Sáb","Descanso"],["Dom","Audiograma 3 o encuesta con la pregunta de la semana"]];
+$("#weekGrid").innerHTML=WEEK.map(w=>`<div class="day ${w[2]?'hot':''}"><b>${w[0]}</b><p>${esc(w[1])}</p></div>`).join("");
+const BATCH=[["A","24–26 nov 2026","Tráiler + episodios 1, 2 y 3"],["B","15–17 dic 2026","Episodios 4, 5, 6 y 7"],["C","25–27 ene 2027","Episodios 8, 9, 10 y 11"],["D","22–24 feb 2027","Episodios 12, 13, 14 y 15"],["E","7 abr 2027","Episodio 16 con las preguntas de los oyentes"]];
+$("#batches").innerHTML=BATCH.map(b=>`<div class="step"><div class="mono">Bloque ${b[0]}</div><b>${b[1]}</b><p>${b[2]}</p></div>`).join("");
+const bOf=n=>n==="T"||n<=3?"A":n<=7?"B":n<=11?"C":n<=15?"D":"E";
+$("#calRows").innerHTML=EP.map(e=>{const dt=pd(e.d);const st=dt<TODAY?'<span class="pill ok">Publicado</span>':(dt-TODAY)/864e5<30?'<span class="pill warn">En producción</span>':'<span class="pill arc">Planificado</span>';return `<tr><td class="num mono">${fmt(dt)}</td><td class="num"><b>${e.n==="T"?"T":"#"+e.n}</b></td><td>${esc(e.t)}</td><td class="muted">${ARCS[e.a]}</td><td class="mono">${bOf(e.n)}</td><td>${st}</td></tr>`}).join("");
+
+/* KPIS */
+const MS=[["1 dic","Tráiler","300 seguidores nuevos en 14 días"],["15 dic","Estreno doble","Top 50 de Deportes en Apple España la semana del estreno"],["12 ene","3 episodios en 30 días","1.000 oyentes y 2.000 h en Spotify (umbral de referencia)"],["16 feb","Fin del arco 2","Finalización ≥ 55% · 500 suscriptores a la newsletter"],["13 abr","Final con oyentes","50 notas de voz recibidas · leads del máster con UTM"]];
+$("#milestones").innerHTML=MS.map(m=>`<div class="step"><div class="mono">${m[0]}</div><b>${m[1]}</b><p>${m[2]}</p></div>`).join("");
+const KPI=[["Descubrir","Vistas de audiogramas por episodio","≥ 5.000 (suma de redes)","Meta, TikTok, YouTube Studio"],["Descubrir","Impresiones en LinkedIn por episodio","≥ 10.000","LinkedIn Analytics"],["Escuchar","Oyentes únicos en 30 días","≥ 1.000 en Spotify","Spotify for Creators"],["Escuchar","Horas de escucha en 30 días","≥ 2.000 en Spotify","Spotify for Creators"],["Escuchar","Tasa de finalización","≥ 55%","Spotify / Apple"],["Seguir","Seguidores nuevos por semana","+100","Spotify, Apple"],["Seguir","Respuestas a la pregunta de la semana","≥ 20","Comentarios, LinkedIn, notas de voz"],["Comunidad","Suscriptores a la newsletter","1.000 a final de temporada","Substack o Beehiiv"],["Convertir","Leads del máster atribuidos","Medir desde el episodio 1 (UTM)","GA4 + CRM de la UB"]];
+$("#kpiRows").innerHTML=KPI.map(k=>`<tr><td><span class="pill arc">${k[0]}</span></td><td><b>${esc(k[1])}</b></td><td class="num">${esc(k[2])}</td><td class="muted">${esc(k[3])}</td></tr>`).join("");
+
+/* PRODUCCION */
+const PITCH=[["Se nota en la conversación","En remoto la latencia hace que las voces se pisen y se pierde el ritmo. Cara a cara, el abogado del diablo funciona de verdad."],["Mejor sonido, menos riesgo","Dos micrófonos en la misma sala, sin depender de la conexión ni del micro del portátil."],["Menos tiempo para Xavier","Cuatro episodios en una mañana al mes, en la UB. En remoto serían cuatro sesiones sueltas."],["La puerta del vídeo queda abierta","Si el set es presencial, añadir dos cámaras en la fase 2 apenas cuesta nada."],["Imagen de marca","Fotos del set para redes y para la comunicación de la UB."],["Prueba sin compromiso","Grabar solo el bloque A en presencial y decidir después de escucharlo."]];
+$("#pitch").innerHTML=PITCH.map(p=>`<div class="box" style="margin:0"><div class="eyebrow">${esc(p[0])}</div>${esc(p[1])}</div>`).join("");
+const FLOW=[["T-21","Tema","Pregunta del episodio y casos elegidos"],["T-14","Guion","Guion por minutos + fuentes verificadas (Oriol)"],["T-12","Revisión","Xavier revisa y prepara sus preguntas de abogado del diablo"],["T-10","Grabación","Mañana en bloque, presencial"],["T-7","Edición","Corte a 28 min, capítulos y sonido"],["T-5","Piezas","3 audiogramas, portada y carrusel"],["T0","Publicar","Martes 07:00 en todas las plataformas"],["T+7","Medir","Revisión de KPIs del lunes"]];
+$("#flow").innerHTML=FLOW.map(f=>`<div class="step"><div class="mono">${f[0]}</div><b>${f[1]}</b><p>${f[2]}</p></div>`).join("");
+const CL=["Título con la fórmula Pregunta o promesa | Caso real | #N","La escena de apertura dura menos de 45 s","Cada cifra está verificada en la pestaña Fuentes","Capítulos con marca de tiempo en la descripción","Notas del episodio con fuentes enlazadas + UTM al máster","Portada con la plantilla de marca","3 audiogramas con subtítulos","Carrusel de LinkedIn listo","Protagonistas de los casos etiquetados en LinkedIn","Pregunta de la semana fijada en comentarios","Newsletter programada para el viernes"];
+renderList($("#checklist"),CL,"nl7-check2",$("#checkBar"));
+$("#resetCheck").onclick=()=>{store.set("nl7-check2",{});renderList($("#checklist"),CL,"nl7-check2",$("#checkBar"))};
+
+/* FUENTES */
+const SRC=[
+ ["World Rugby obliga al protector bucal inteligente a unos 7.500 profesionales desde el 1 de enero de 2024. Mide aceleración y velocidad lineal y angular de cada impacto en la cabeza","Cleveland Clinic, oct. 2023","https://newsroom.clevelandclinic.org/2023/10/30/high-tech-intelligent-mouthguard-system-selected-for-global-adoption-by-world-rugby","ok","T, 1"],
+ ["«18% de conmociones descubiertas después del partido»: la fuente encontrada dice alrededor del 15%. Usar «cerca del 15%»","Yahoo Sports / The Guardian","https://uk.sports.yahoo.com/news/world-rugby-adopt-gamechanging-g-110039693.html","warn","1"],
+ ["«Gamechanger»: según la fuente lo dice una fuente anónima a The Guardian, no el director médico. El director médico, Eanna Falvey, habla de que los jugadores de élite estarán mejor cuidados que nunca","Yahoo Sports · Cleveland Clinic","https://uk.sports.yahoo.com/news/world-rugby-adopt-gamechanging-g-110039693.html","warn","1"],
+ ["George Turner (Escocia) sale en el minuto 17 del Escocia–Francia del Seis Naciones, 10 de febrero de 2024, por una alerta del protector bucal. Primera vez. Volvió en el 28","Planet Rugby","https://www.planetrugby.com/news/historic-moment-in-six-nations-clash-as-new-technology-protects-scotland-star-from-further-harm","ok","T, 1"],
+ ["Quejas de jugadores: dispositivo voluminoso y dificultad para respirar. Sí está documentado que el seleccionador escocés pidió cautela","RugbyPass","https://rugbypass.com/news/gregor-townsend-wary-of-trusting-mouthguard-technology-that-hasnt-been-proven","warn","1"],
+ ["Barça, ISGlobal, Universidad de Bonn y Made of Genes: 34 jugadoras, 4 temporadas (2019/20–2022/23), ~14.000 observaciones diarias, 83 lesiones sin contacto. El análisis de supervivencia supera a los clasificadores clásicos. Mejor predictor: distancia acumulada en 21 días","ISGlobal, jul. 2026 (npj Digital Medicine)","https://www.isglobal.org/en/-/isglobal-el-barca-innovation-hub-la-universidad-de-bonn-y-made-of-genes-desarrollan-un-nuevo-modelo-de-inteligencia-artificial-para-anticipar-las-lesiones-en-el-futbol-femenino-de-elite","ok","1"],
+ ["Artículo científico original del modelo del Barça","npj Digital Medicine","https://www.nature.com/articles/s41746-026-02937-3","ok","1"],
+ ["Guantes biométricos obligatorios en F1 desde 2019","Formula1.com · reglas 2019","https://www.formula1.com/en/latest/features/2018/4/what-you-need-to-know-about-f1s-2019-rule-changes.html","ok","1, 3"],
+ ["La FIA publicó una guía sobre el uso de datos biométricos","FIA","https://www.fia.com/news/fia-launches-guidelines-biometric-data-use","ok","3"],
+ ["Prendas con sensores biométricos para pilotos (OMP)","PMW Magazine · TKART","https://www.pmw-magazine.com/news/rd/omp-unveils-biometric-sensor-equipped-shirt.html","warn","3"],
+ ["IBM analiza más de 100.000 datos de cada golpe en Wimbledon","IBM, caso Wimbledon","https://www.ibm.com/es-es/case-studies/wimbledon-digital-transformation","warn","1, 8"],
+ ["Las plataformas detectan cerca del 50% de las lesiones pero no saben cuándo ocurrirán","datos.gob.es, jul. 2025 (no se pudo abrir)","https://datos.gob.es/es/blog/aplicaciones-de-la-inteligencia-artificial-en-el-deporte-profesional","warn","1"],
+ ["Reed Shaffner (CTO de Teamworks) sobre el retorno dudoso de la predicción de lesiones. El resumen público solo confirma que habla de dónde funciona la IA y de una herramienta que estima el potencial futuro del jugador","Training Ground Guru, 28 ago. 2026 (contenido de pago)","https://trainingground.guru/podcast/reed-shaffner-footballs-ai-moment-promise-and-pitfalls/","warn","1, 7"],
+ ["Proyecto SIPAR: calcetines Danu con sensores y análisis de la marcha. Horizon 2020, oct. 2019–mar. 2020, 50.000 € de la UE. El análisis predictivo de lesiones era un plan, no un resultado","CORDIS","https://cordis.europa.eu/article/id/421971-gait-analysis-technology-aims-to-prevent-expensive-sporting-injuries/es","ok","1"],
+ ["IA para predecir lesiones en triatletas de 11 a 18 años con reducción tras 7 meses de readaptación","JAM Sports (localizar el estudio)","","warn","1, 4"],
+ ["Spurs: viajes de temporada en ~20 min (antes 3 semanas). NFL: tabletas con Copilot. Oakland Ballers y HamKam: decisiones y entrenador con IA. Cavaliers e Indiana Fever: personalización","PwC, ene. 2026","https://www.pwc.com/us/en/industries/tmt/library/ai-agents-in-sports.html","ok","6, 9, 10"],
+ ["Wimbledon 2025: líneas cantadas por un sistema automático. El sistema estuvo desactivado en un partido y el club lo atribuyó a un error humano","Sky Sports, jul. 2025","https://www.skysports.com/tennis/news/32498/13393402/wimbledon-officials-apologise-to-players-after-line-calling-technology-turned-off-in-malfunction-on-centre-court","ok","5, 15"],
+ ["Protestas de estudiantes disfrazados de jueces de línea","Localizar fuente","","warn","15"],
+ ["Mundial 2026: avatares 3D, balón con sensor y fuera de juego semiautomático","Euronews, jun. 2026","https://es.euronews.com/2026/06/01/avatares-de-ia-y-balones-inteligentes-en-el-mundial-2026-de-la-fifa","ok","5, 8"],
+ ["Detalle técnico del Mundial: 16 cámaras, 50 lecturas por segundo, 29 puntos corporales, 1.248 avatares","FIFA Inside","https://inside.fifa.com/es/innovation/news/como-innovacion-mejorando-experiencia-copa-mundial-2026","warn","5"],
+ ["Google × AFA: Gemini patrocinador global de la selección argentina","Forbes Argentina","https://www.forbesargentina.com/negocios/los-detalles-acuerdo-google-afa-suma-gemini-como-sponsor-global-seleccion-argentina-n87303","ok","11"],
+ ["Uso de Gemini en prevención de lesiones y táctica en el Mundial","Infobae, jun. 2026","https://www.infobae.com/tecno/2026/06/22/argentina-lidera-el-mundial-junto-a-google-este-es-el-as-bajo-la-manga-del-equipo-de-scaloni","warn","11"],
+ ["Reglamento europeo de IA, art. 5: prohíbe técnicas manipuladoras que causen perjuicio. Aplicarlo a las apuestas es una interpretación y hay que decirlo así","Reglamento (UE) 2024/1689","https://eur-lex.europa.eu/eli/reg/2024/1689/oj","warn","13"],
+ ["Hábitos de escucha en España 2026","Observatorio iVoox vía Señal News","https://senalnews.com/es/data/el-70-de-los-espanoles-escucha-podcasts-todos-los-dias-","ok","Estrategia"],
+ ["Spotify Partner Program en España desde el 20/10/2026: 3 episodios, 2.000 h y 1.000 oyentes en 30 días","Quasa, oct. 2026","https://quasa.io/es/media/spotify-ya-paga-videopodcasts-en-espana-exige-2-000-horas-en-30-dias","ok","KPIs"],
+ ["Kings League: más de 900 M de visualizaciones en 2025","Señal News, mar. 2026","https://senalnews.com/es/data/la-revolucion-del-futbol-o-como-se-reinventa-en-youtube","ok","12"],
+ ["40% de practicantes frente a 5–10% de cobertura en el deporte femenino; de 130.000 a más de 80 M de datos por jugador y partido","Compendio Founderz (curso, oct. 2025)","","warn","14"]
+];
+let sf="all";const sfl=$("#srcFilters");
+[["all","Todos"],["ok","Verificados"],["warn","Por verificar"]].forEach(([k,l])=>{const b=document.createElement("button");b.type="button";b.dataset.k=k;b.setAttribute("aria-pressed",k==="all");b.textContent=l+" ("+(k==="all"?SRC.length:SRC.filter(s=>s[3]===k).length)+")";b.onclick=()=>{sf=k;sfl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.k===k));renderSrc()};sfl.appendChild(b)});
+function renderSrc(){$("#srcRows").innerHTML=SRC.filter(s=>sf==="all"||s[3]===sf).map(s=>`<tr><td>${esc(s[0])}</td><td>${s[2]?`<a href="${s[2]}" target="_blank" rel="noopener">${esc(s[1])}</a>`:`<span class="muted">${esc(s[1])}</span>`}</td><td><span class="pill ${s[3]}">${s[3]==="ok"?"Verificado":"Por verificar"}</span></td><td class="mono">${s[4]}</td></tr>`).join("")}
+renderSrc();
+
+show();
+})();
+</script>
+</body>
+</html>
